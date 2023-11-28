@@ -172,10 +172,10 @@ io.on("connection", (socket) => {
 
   socket.on("send-message", (data) => {
     const { sendtopicId } = data;
-    io.to(sendtopicId).emit("recieved-message", data);
+    socket.to(sendtopicId).emit("recieved-message", data);
 
     sendNotifcation(data);
-    // savemsg(data);
+    savemsg(data);
     console.log("message sent to ", sendtopicId, "it waas ", data);
   });
 
